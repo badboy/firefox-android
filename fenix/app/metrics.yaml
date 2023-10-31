@@ -10554,7 +10554,7 @@ shopping:
       source:
         description: |
           The method used to close the bottom sheet. Possible values are: `sheet_slide`,
-          `link_opened`, `click_outside`, `back_pressed`, `handle_clicked`, `not_now` 
+          `link_opened`, `click_outside`, `back_pressed`, `handle_clicked`, `not_now`
           or `opt_out`.
         type: string
     send_in_pings:
@@ -11076,3 +11076,94 @@ fx_suggest:
     expires: never
     send_in_pings:
       - fx-suggest
+
+complex.types:
+  number_array:
+    type: object
+    description: The id, position, and shim for each newtab tile.
+    bugs:
+      - https://bugzilla.mozilla.org/11137353
+    data_reviews:
+      - http://example.com/reviews
+    notification_emails:
+      - CHANGE-ME@example.com
+    expires: never
+    structure:
+      type: array
+      items:
+        type: number
+
+  array_in_array:
+    type: object
+    description: The id, position, and shim for each newtab tile.
+    bugs:
+      - https://bugzilla.mozilla.org/11137353
+    data_reviews:
+      - http://example.com/reviews
+    notification_emails:
+      - CHANGE-ME@example.com
+    expires: never
+    structure:
+      type: array
+      items:
+        type: array
+        items:
+          type: boolean
+
+activity.stream:
+  tiles:
+    type: object
+    description: The id, position, and shim for each newtab tile.
+    bugs:
+      - https://bugzilla.mozilla.org/11137353
+    data_reviews:
+      - http://example.com/reviews
+    notification_emails:
+      - CHANGE-ME@example.com
+    expires: never
+    structure:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: number
+          pos:
+            type: number
+          shim:
+            type: string
+          nested:
+            type: object
+            properties:
+              count:
+                type: number
+              string:
+                type: string
+
+crash.stack:
+  threads:
+    type: object
+    description: All threads' frame information.
+    bugs:
+      - https://bugzilla.mozilla.org/11137353
+    data_reviews:
+      - http://example.com/reviews
+    notification_emails:
+      - CHANGE-ME@example.com
+    expires: never
+    structure:
+      type: array
+      items:
+        type: object
+        properties:
+          frames:
+            type: array
+            items:
+              type: object
+              properties:
+                module_index:
+                  type: number
+                ip:
+                  type: string
+                trust:
+                  type: string
