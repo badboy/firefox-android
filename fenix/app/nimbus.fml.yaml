@@ -252,6 +252,17 @@ features:
         description: "A map of metric base-identifiers to booleans representing the state of the 'enabled' flag for that metric."
         type: Map<String, Boolean>
         default: {}
+
+  glean-internal-sdk:
+    description: "The Glean internal SDK feature intended only for internal Glean Team use"
+    variables:
+      metrics-enabled:
+        description: |
+          A map of metric base-identifiers to booleans representing the state of the 'enabled' flag for that metric.
+          This is not for public use! For data-control-plane use, please refer to the Glean documentation and use the
+          `gleanMetricConfiguration` found in the `glean` feature for this.
+        type: Map<String, Boolean>
+        default: {}
       enable-event-timestamps:
         description: "Enables precise event timestamps for Glean events"
         type: Boolean

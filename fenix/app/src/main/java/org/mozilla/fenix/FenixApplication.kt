@@ -204,10 +204,11 @@ open class FenixApplication : LocaleAwareApplication(), Provider {
             httpClient = ConceptFetchHttpUploader(
                 lazy(LazyThreadSafetyMode.NONE) { components.core.client },
             ),
-            enableEventTimestamps = FxNimbus.features.glean.value().enableEventTimestamps,
+            enableEventTimestamps = FxNimbus.features.gleanInternalSdk.value().enableEventTimestamps,
         )
 
         // Set the metric configuration from Nimbus.
+        Glean.setMetricsEnabledConfig(FxNimbus.features.gleanInternalSdk.value().metricsEnabled)
         Glean.setMetricsEnabledConfig(FxNimbus.features.glean.value().metricsEnabled)
 
         Glean.initialize(
